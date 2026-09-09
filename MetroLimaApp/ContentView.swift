@@ -9,8 +9,9 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             VStack(spacing: 0) {
+                // Formulario de Selección
                 Form {
-                    Section(header: Text("Consulta tu ruta")) {
+                    Section(header: Text("Consulta tu viaje")) {
                         Picker("Estación Origen", selection: $originStation) {
                             Text("Seleccionar").tag(Station?.none)
                             ForEach(sampleStations) { station in
@@ -26,30 +27,43 @@ struct ContentView: View {
                         }
                     }
 
+                    // Resultado simple cuando seleccionas estaciones diferentes
                     if let origin = originStation, let destination = destinationStation, origin != destination {
-                        Section(header: Text("Detalle de viaje")) {
+                        Section(header: Text("Información del viaje")) {
+                            
+                            // 1. Ruta
                             HStack {
                                 Image(systemName: "tram.fill")
-                                    .font(.title2)
-                                    .foregroundColor(.accentColor)
-                                
-                                VStack(alignment: .leading, spacing: 4) {
-                                    Text("\(origin.name) ➔ \(destination.name)")
-                                        .font(.headline)
-                                    Text("Línea de salida: \(origin.line)")
-                                        .font(.subheadline)
-                                        .foregroundColor(.secondary)
-                                }
+                                    .foregroundColor(.blue)
+                                Text("\(origin.name) ➔ \(destination.name)")
+                                    .font(.headline)
+                            }
+                            
+                            // 2. Tiempo Estimado
+                            HStack {
+                                Image(systemName: "clock.fill")
+                                    .foregroundColor(.orange)
+                                Text("Tiempo estimado: ~15 a 20 min")
+                                    .font(.subheadline)
+                            }
+                            
+                            // 3. Tarifa
+                            HStack {
+                                Image(systemName: "banknote.fill")
+                                    .foregroundColor(.green)
+                                Text("Precio del pasaje: S/ 1.50")
+                                    .font(.subheadline)
                             }
                         }
                     }
                 }
-                .frame(maxHeight: 280)
+                .frame(maxHeight: 290)
 
                 Divider()
 
+                // Mapa interactivo abajo
                 VStack(alignment: .leading, spacing: 4) {
-                    Text("Mapa interactivo")
+                    Text("Mapa del Metro de Lima")
                         .font(.caption)
                         .bold()
                         .foregroundColor(.secondary)
