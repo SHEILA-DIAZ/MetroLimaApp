@@ -6,15 +6,8 @@
 	objectVersion = 77;
 	objects = {
 
-/* Begin PBXBuildFile section */
-		CDBCE10D3051A5A90091FA33 /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBCE10C3051A5A80091FA33 /* Station.swift */; };
-		CDBCE10F3051A5DF0091FA33 /* SVGWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBCE10E3051A5DF0091FA33 /* SVGWebView.swift */; };
-/* End PBXBuildFile section */
-
 /* Begin PBXFileReference section */
 		CDBCE0FE3051A49E0091FA33 /* MetroLimaApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MetroLimaApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		CDBCE10C3051A5A80091FA33 /* Station.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
-		CDBCE10E3051A5DF0091FA33 /* SVGWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SVGWebView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -39,8 +32,6 @@
 		CDBCE0F53051A49E0091FA33 = {
 			isa = PBXGroup;
 			children = (
-				CDBCE10C3051A5A80091FA33 /* Station.swift */,
-				CDBCE10E3051A5DF0091FA33 /* SVGWebView.swift */,
 				CDBCE1003051A49E0091FA33 /* MetroLimaApp */,
 				CDBCE0FF3051A49E0091FA33 /* Products */,
 			);
@@ -128,8 +119,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CDBCE10F3051A5DF0091FA33 /* SVGWebView.swift in Sources */,
-				CDBCE10D3051A5A90091FA33 /* Station.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
