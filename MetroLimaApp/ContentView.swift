@@ -21,7 +21,7 @@ let metroDictionary: [String: Station] = [
     "Mercado Santa Anita": Station(name: "Mercado Santa Anita", line: "Línea 2", index: 3)
 ]
 
-// MARK: - 2. MAPA SVG INTERACTIVO (CORREGIDO)
+// MARK: - 2. MAPA SVG INTERACTIVO
 struct SVGWebView: UIViewRepresentable {
     let urlString: String
 
@@ -75,6 +75,15 @@ struct ContentView: View {
         return !origen.isEmpty && origen == destino
     }
 
+    // MEJORA: Obtener color distintivo según la línea
+    func colorParaLinea(_ linea: String) -> Color {
+        switch linea {
+        case "Línea 1": return .green
+        case "Línea 2": return .red
+        default: return .blue
+        }
+    }
+
     var body: some View {
         NavigationStack {
             VStack(spacing: 0) {
@@ -84,6 +93,23 @@ struct ContentView: View {
                             Text("Seleccionar").tag("")
                             ForEach(availableKeys, id: \.self) { key in
                                 Text(key).tag(key)
+                            }
+                        }
+
+                        // MEJORA: Botón para invertir origen y destino
+                        if !originKey.isEmpty || !destinationKey.isEmpty {
+                            Button(action: {
+                                let temp = originKey
+                                originKey = destinationKey
+                                destinationKey = temp
+                            }) {
+                                HStack {
+                                    Spacer()
+                                    Image(systemName: "arrow.up.arrow.down")
+                                    Text("Invertir trayecto")
+                                        .font(.subheadline)
+                                    Spacer()
+                                }
                             }
                         }
 
@@ -112,7 +138,7 @@ struct ContentView: View {
                         Section(header: Text("Información del viaje")) {
                             HStack {
                                 Image(systemName: "tram.fill")
-                                    .foregroundColor(.blue)
+                                    .foregroundColor(colorParaLinea(origin.line))
                                 Text("\(origin.name) ➔ \(destination.name)")
                                     .font(.headline)
                             }
@@ -138,7 +164,7 @@ struct ContentView: View {
                         }
                     }
                 }
-                .frame(maxHeight: 280)
+                .frame(maxHeight: 310)
 
                 Divider()
 
