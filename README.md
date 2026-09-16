@@ -1,5 +1,4 @@
-
-# Metro de Lima App (SwiftUI)
+#  Metro de Lima App (SwiftUI)
 
 Aplicación nativa en Swift/SwiftUI para consultar rutas, tiempos estimados, tarifas y visualizar el mapa interactivo del Metro de Lima.
 
@@ -14,6 +13,8 @@ Aplicación nativa en Swift/SwiftUI para consultar rutas, tiempos estimados, tar
 | **RF-05** | Cálculo de Tarifa | Se calcula el precio del pasaje diferenciando entre tarifa general (S/ 1.50) y tarifa preferencial/estudiante (S/ 0.75). |
 | **RF-06** | Validación de Entradas | Se valida que el origen y destino no sean la misma estación. |
 | **RF-07** | Visualización del Mapa | Renderizado del mapa SVG oficial del Metro de Lima mediante `WebKit`. |
+| **RF-08** | Inversión de Trayecto | Botón dinámico para intercambiar la estación de origen y destino de forma instantánea. |
+| **RF-09** | Distinción por Colores | Identificación visual con colores institucionales según la línea correspondiente (Verde para Línea 1 y Rojo para Línea 2). |
 
 ---
 
@@ -32,6 +33,7 @@ Aplicación nativa en Swift/SwiftUI para consultar rutas, tiempos estimados, tar
 2. **`obtenerMensajeLinea(origen:destino:) -> String`**: Retorna el tramo a recorrer o la indicación si requiere trasbordo.
 3. **`calcularTarifa(esEstudiante:) -> String`**: Retorna el costo del pasaje según el tipo de tarifa.
 4. **`esMismaEstacion(origen:destino:) -> Bool`**: Valida que no se seleccione la misma estación de origen y destino.
-5. **`makeUIView(context:)` / `updateUIView(_:context:)`**: Métodos delegados para inicializar y cargar la vista web del mapa SVG.
+5. **`colorParaLinea(_:) -> Color`**: Asigna dinámicamente un color a la interfaz según la línea de la estación.
+6. **`makeUIView(context:)` / `updateUIView(_:context:)`**: Métodos delegados para inicializar y cargar la vista web del mapa SVG.
 
 ---
