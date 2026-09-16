@@ -1,37 +1,33 @@
+# 🚆 Sistema Integrado de Transporte Lima - Juegos Panamericanos
 
-# 🚆 Metro de Lima App (SwiftUI)
-
-Aplicación nativa en Swift/SwiftUI para consultar rutas, tiempos estimados, tarifas y visualizar el mapa interactivo del Metro de Lima.
-
-## 📋 Requerimientos Funcionales
-
-| ID | Requerimiento | Descripción |
-| :--- | :--- | :--- |
-| **RF-01** | Selección de Estaciones | El usuario puede seleccionar una estación de origen y una de destino mediante menús desplegables (`Picker`). |
-| **RF-02** | Consulta vía Diccionario | Los datos de las estaciones se almacenan y consultan desde una estructura de **Diccionario (`[String: Station]`)**. |
-| **RF-03** | Cálculo de Tiempo | La app calcula el tiempo estimado de viaje en minutos según el recorrido entre estaciones. |
-| **RF-04** | Verificación de Trasbordo | Se detecta automáticamente si el viaje requiere cambio entre la Línea 1 y la Línea 2. |
-| **RF-05** | Cálculo de Tarifa | Se calcula el precio del pasaje diferenciando entre tarifa general (S/ 1.50) y tarifa preferencial/estudiante (S/ 0.75). |
-| **RF-06** | Validación de Entradas | Se valida que el origen y destino no sean la misma estación. |
-| **RF-07** | Visualización del Mapa | Renderizado del mapa SVG oficial del Metro de Lima mediante `WebKit`. |
+**Estudiante:** Sheila Diaz Rojas  
+**Asignatura:** Desarrollo Móvil Avanzado  
+**Lenguaje:** Swift 5+  
+**Entorno de Ejecución:** Terminal / Consola  
 
 ---
 
-## 🛠️ Requerimientos No Funcionales
-
-* **Lenguaje:** Swift 5.
-* **Framework:** SwiftUI & WebKit (`UIViewRepresentable`).
-* **Arquitectura:** Código unificado y limpio en una sola vista funcional (`ContentView.swift`).
-* **Compatibilidad:** iOS 16.0 o superior.
+## 📌 Descripción del Proyecto
+Aplicación desarrollada en **Swift puro** para la gestión y consulta del Sistema Integrado de Transporte de Lima (Línea 1, Línea 2 y Metropolitano). El sistema está diseñado para facilitar la movilidad de usuarios y asistentes a los **Juegos Panamericanos**, proporcionando información sobre rutas, tiempos, tarifas, accesibilidad y recintos deportivos cercanos.
 
 ---
 
-## ⚙️ Funciones Implementadas (`ContentView.swift`)
+## 🚀 Requerimientos Cumplidos
 
-1. **`calcularTiempo(origen:destino:) -> Int`**: Determina el tiempo total del recorrido en minutos.
-2. **`obtenerMensajeLinea(origen:destino:) -> String`**: Retorna el tramo a recorrer o la indicación si requiere trasbordo.
-3. **`calcularTarifa(esEstudiante:) -> String`**: Retorna el costo del pasaje según el tipo de tarifa.
-4. **`esMismaEstacion(origen:destino:) -> Bool`**: Valida que no se seleccione la misma estación de origen y destino.
-5. **`makeUIView(context:)` / `updateUIView(_:context:)`**: Métodos delegados para inicializar y cargar la vista web del mapa SVG.
+* **Estructura de Datos Avanzada:** Uso de `struct` y `[String: Station]` (Diccionarios) como estructura base para el almacenamiento optimizado.
+* **Búsqueda Flexible e Insensible:** Algoritmo de normalización de texto `.folding(options: .diacriticInsensitive)` que permite buscar estaciones sin importar mayúsculas, minúsculas, tildes o búsquedas parciales (ej. *'el salvador'*, *'EL SALVADOR'*, *'salvador'*).
+* **Ficha Técnica de Accesibilidad:** Consulta de presencia de ascensores y vías de acceso cercanas para cada estación.
+* **Módulo Panamericano:** Identificación de recintos deportivos vinculados a la red de transporte (Videna, Polideportivo Villa El Salvador, Estadio Nacional, etc.).
+* **Planificador de Viajes:** Cálculo automático de tiempos estimados de recorrido y tarifas diferenciadas (General vs. Preferencial / Estudiantil).
+* **Validaciones de Seguridad:** Prevención de errores en caso de origen/destino idénticos o entradas no registradas.
 
 ---
+
+## 💻 Instrucciones de Ejecución
+
+### Opción 1: Ejecutar desde la Terminal (macOS / Linux)
+1. Clona el repositorio o descarga el archivo `SistemaConsola.swift`.
+2. Abre la terminal en la carpeta del proyecto.
+3. Compila y ejecuta con el siguiente comando:
+   ```bash
+   swift SistemaConsola.swift
